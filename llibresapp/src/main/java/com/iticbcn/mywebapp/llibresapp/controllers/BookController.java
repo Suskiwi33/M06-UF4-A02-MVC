@@ -3,6 +3,7 @@ package com.iticbcn.mywebapp.llibresapp.controllers;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Optional;
+import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -37,18 +38,25 @@ public class BookController {
     @PostMapping("/index")
     public String login(@RequestParam("user") String user, @RequestParam("password") String password, Model model) {
 
-        if (password.equals("toni") && user.equals("h3ll0!!")) {
+        if (user.equals("toni") && password.equals("h3ll0!!")) {
             return "index";
         } else {
             return "login";
         }
     }
 
+    @GetMapping("/index")
+    public String index(Model model) {
+
+            return "index";
+        
+    }
+
 
     @GetMapping("/consulta") 
     public String consulta(Model model) {
 
-        ArrayList<Llibre> llibres = (ArrayList<Llibre>) bookService.findAll();
+        Set<Llibre> llibres = bookService.findAll();
 
         model.addAttribute("llibres", llibres);
         
@@ -93,16 +101,21 @@ public class BookController {
         return "inserir";
     }
     
-        @GetMapping("/cercaid")
+    @GetMapping("/cercaid")
     public String inputCerca(Model model) {
         Llibre llibre = new Llibre();
-        llibre.setId_Llibre(0);
+        llibre.setIdLlibre(0);
         model.addAttribute("llibreErr", true);
         model.addAttribute("message", "");
         model.addAttribute("llibre", llibre);
 
         return "cercaid";
 
+    }
+
+    @GetMapping("/inserir") 
+    public String inputInserir(Model model) {
+        return "inserir";
     }
 
 
@@ -119,7 +132,7 @@ public class BookController {
                 idLlib = Integer.parseInt(idLlibre);
                 Optional<Llibre> llibre = bookService.findByIdLlibre(idLlib);
                 if(llibre !=null) {
-                    model.addAttribute("llibre", llibre);
+                    model.addAttribute("llibre", llibre.get());
                 } else {
                     message = "No hi ha cap llibre amb aquesta id";
                     llibreErr = true;

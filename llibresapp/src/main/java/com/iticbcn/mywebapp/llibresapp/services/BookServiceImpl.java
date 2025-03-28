@@ -11,7 +11,7 @@ import com.iticbcn.mywebapp.llibresapp.repositories.RepoLlibre;
 
 @Service
 public class BookServiceImpl implements BookService {
-    @Autowired
+    
     private final RepoLlibre repository;
 
     @Autowired

@@ -11,22 +11,28 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "llibres")
-public class Llibre implements Serializable{
+@Table(name = "llibre")
+public class Llibre{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id_Llibre;
+    private int idLlibre;
+
     @Column
     private String titol;
+
     @Column
     private String autor;
+
     @Column
     private String editorial;
+
     @Column
     private LocalDate datapublicacio;
+
     @Column
     private String tematica;
+
     @Column(unique = true, nullable = false)
-    private String ISBN;
+    private String isbn;
     
 }

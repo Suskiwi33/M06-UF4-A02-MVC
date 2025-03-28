@@ -18,7 +18,7 @@ public interface BookService {
 
     boolean validateISBNFormat(String isbn);
 
-    Optional <Llibre> findByIdLlibre(int idLlibre);
+    Optional <Llibre> findByIdLlibre(int idLlibre) throws Exception;
 
     Llibre save(Llibre llibre);
 }

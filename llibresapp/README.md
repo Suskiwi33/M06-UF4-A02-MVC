@@ -1,5 +1,15 @@
 # M06-UF4-A02-MVC
 
+## Inserir
+![alt text](image.png)
+
+## Consultar general
+![alt text](image-1.png)
+
+# Consultar per id
+![alt text](image-2.png)
+
+
 ### Per què al servei estem utilitzant mètodes que no hem declarat explícitament al repositori? Com és possible?
 Perque fem el extends de CrudRepository que ens proporciona els metodes.
 
